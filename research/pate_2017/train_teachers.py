@@ -19,10 +19,14 @@ from __future__ import division
 from __future__ import print_function
 
 import tensorflow as tf
+import pandas as pd
 
-from differential_privacy.multiple_teachers import deep_cnn
-from differential_privacy.multiple_teachers import input
-from differential_privacy.multiple_teachers import metrics
+# from differential_privacy.multiple_teachers import deep_cnn
+# from differential_privacy.multiple_teachers import input
+# from differential_privacy.multiple_teachers import metrics
+import deep_cnn
+import input
+import metrics
 
 
 tf.flags.DEFINE_string('dataset', 'svhn', 'The name of the dataset to use')
@@ -61,6 +65,8 @@ def train_teacher(dataset, nb_teachers, teacher_id):
     train_data, train_labels, test_data, test_labels = input.ld_cifar10()
   elif dataset == 'mnist':
     train_data, train_labels, test_data, test_labels = input.ld_mnist()
+  elif dataset =='synthea':
+
   else:
     print("Check value of dataset flag")
     return False
